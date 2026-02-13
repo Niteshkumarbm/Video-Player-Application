@@ -3,7 +3,7 @@ import { useVideoStore } from '@/store/videoStore';
 import { formatDuration, getCategoryColor } from '@/utils/helpers';
 import { Play } from 'lucide-react';
 
-export const RelatedVideosList: React.FC = () => {
+const RelatedVideosList: React.FC = () => {
   const { relatedVideos, currentVideo, playVideo } = useVideoStore();
   
   if (!currentVideo || relatedVideos.length === 0) return null;
@@ -29,7 +29,6 @@ export const RelatedVideosList: React.FC = () => {
             onClick={() => playVideo(video)}
             className="group flex cursor-pointer gap-3 rounded-lg p-2 transition-colors hover:bg-dark-800"
           >
-            {/* Thumbnail */}
             <div className="relative aspect-video w-40 flex-shrink-0 overflow-hidden rounded-lg bg-dark-800">
               <img
                 src={video.thumbnail}
@@ -38,18 +37,15 @@ export const RelatedVideosList: React.FC = () => {
                 loading="lazy"
               />
               
-              {/* Play overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <Play className="h-8 w-8 fill-white text-white" />
               </div>
               
-              {/* Duration */}
               <div className="absolute bottom-1 right-1 rounded bg-black/80 px-1.5 py-0.5 text-xs font-medium text-white">
                 {formatDuration(video.duration)}
               </div>
             </div>
             
-            {/* Video info */}
             <div className="flex flex-1 flex-col justify-center space-y-1">
               <h4 className="line-clamp-2 text-sm font-semibold text-dark-50 transition-colors group-hover:text-primary-500">
                 {video.title}
@@ -64,5 +60,8 @@ export const RelatedVideosList: React.FC = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
+
+export {RelatedVideosList}
+export default RelatedVideosList;

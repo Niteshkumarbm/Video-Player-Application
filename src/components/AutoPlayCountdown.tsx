@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useVideoStore } from '@/store/videoStore';
 
-export const AutoPlayCountdown: React.FC = () => {
+const AutoPlayCountdown: React.FC = () => {
   const { 
     showCountdown, 
     countdownValue, 
@@ -35,7 +35,6 @@ export const AutoPlayCountdown: React.FC = () => {
         className="absolute bottom-24 right-4 z-30 w-80 max-w-[calc(100vw-2rem)] overflow-hidden rounded-xl bg-dark-900/95 shadow-2xl backdrop-blur-sm"
       >
         <div className="relative p-4">
-          {/* Close button */}
           <button
             onClick={cancelCountdown}
             className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-dark-800 text-white transition-colors hover:bg-dark-700"
@@ -45,7 +44,6 @@ export const AutoPlayCountdown: React.FC = () => {
           </button>
           
           <div className="space-y-3">
-            {/* Countdown text */}
             <div className="pr-8">
               <p className="text-sm text-dark-400">Up next</p>
               <p className="text-xs text-dark-500">
@@ -53,7 +51,6 @@ export const AutoPlayCountdown: React.FC = () => {
               </p>
             </div>
             
-            {/* Next video preview */}
             <div className="flex gap-3">
               <div className="relative aspect-video w-32 flex-shrink-0 overflow-hidden rounded-lg bg-dark-800">
                 <img
@@ -70,7 +67,6 @@ export const AutoPlayCountdown: React.FC = () => {
               </div>
             </div>
             
-            {/* Progress bar */}
             <div className="h-1 overflow-hidden rounded-full bg-dark-800">
               <motion.div
                 initial={{ width: '100%' }}
@@ -85,3 +81,6 @@ export const AutoPlayCountdown: React.FC = () => {
     </AnimatePresence>
   );
 };
+
+export {AutoPlayCountdown}
+export default AutoPlayCountdown

@@ -8,7 +8,7 @@ interface CategorySectionProps {
   videos: Video[];
 }
 
-export const CategorySection: React.FC<CategorySectionProps> = ({ category, videos }) => {
+const CategorySection: React.FC<CategorySectionProps> = ({ category, videos }) => {
   const { playVideo } = useVideoStore();
   
   if (videos.length === 0) return null;
@@ -36,3 +36,6 @@ export const CategorySection: React.FC<CategorySectionProps> = ({ category, vide
     </section>
   );
 };
+
+export {CategorySection}
+export default CategorySection

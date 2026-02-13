@@ -4,10 +4,8 @@ import { useVideoStore } from '@/store/videoStore';
 export const usePictureInPicture = (videoRef: RefObject<HTMLVideoElement>) => {
   const { isPiPActive, setIsPiPActive } = useVideoStore();
   
-  // Check if PiP is supported
   const isPiPSupported = typeof document !== 'undefined' && 'pictureInPictureEnabled' in document;
   
-  // Enter PiP mode
   const enterPiP = useCallback(async () => {
     const video = videoRef.current;
     if (!video || !isPiPSupported) return;
@@ -23,7 +21,6 @@ export const usePictureInPicture = (videoRef: RefObject<HTMLVideoElement>) => {
     }
   }, [videoRef, isPiPSupported, setIsPiPActive]);
   
-  // Exit PiP mode
   const exitPiP = useCallback(async () => {
     if (!isPiPSupported || !document.pictureInPictureElement) return;
     
@@ -35,7 +32,6 @@ export const usePictureInPicture = (videoRef: RefObject<HTMLVideoElement>) => {
     }
   }, [isPiPSupported, setIsPiPActive]);
   
-  // Toggle PiP mode
   const togglePiP = useCallback(async () => {
     if (isPiPActive) {
       await exitPiP();
@@ -44,7 +40,6 @@ export const usePictureInPicture = (videoRef: RefObject<HTMLVideoElement>) => {
     }
   }, [isPiPActive, enterPiP, exitPiP]);
   
-  // Listen for PiP events
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !isPiPSupported) return;

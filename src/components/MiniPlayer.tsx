@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Play, Pause, X } from 'lucide-react';
 import { useVideoStore } from '@/store/videoStore';
 
-export const MiniPlayer: React.FC = () => {
+const MiniPlayer: React.FC = () => {
   const { 
     currentVideo, 
     isPlaying, 
@@ -22,7 +22,6 @@ export const MiniPlayer: React.FC = () => {
       className="fixed bottom-0 left-0 right-0 z-50 border-t border-dark-700 bg-dark-900 shadow-2xl"
     >
       <div className="flex items-center gap-3 p-3">
-        {/* Video thumbnail */}
         <div
           onClick={maximizePlayer}
           className="relative aspect-video w-24 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg bg-dark-800"
@@ -33,7 +32,6 @@ export const MiniPlayer: React.FC = () => {
             className="h-full w-full object-cover"
           />
           
-          {/* Play indicator */}
           {isPlaying && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <div className="flex space-x-1">
@@ -45,7 +43,6 @@ export const MiniPlayer: React.FC = () => {
           )}
         </div>
         
-        {/* Video info */}
         <div
           onClick={maximizePlayer}
           className="flex-1 cursor-pointer overflow-hidden"
@@ -55,9 +52,7 @@ export const MiniPlayer: React.FC = () => {
           </h3>
         </div>
         
-        {/* Controls */}
         <div className="flex items-center gap-2">
-          {/* Play/Pause */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -73,7 +68,6 @@ export const MiniPlayer: React.FC = () => {
             )}
           </button>
           
-          {/* Close */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -89,3 +83,6 @@ export const MiniPlayer: React.FC = () => {
     </motion.div>
   );
 };
+
+export {MiniPlayer}
+export default MiniPlayer;

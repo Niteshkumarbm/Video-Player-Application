@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { motion, PanInfo } from 'framer-motion';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
 import { useVideoStore } from '@/store/videoStore';
 import { useVideoPlayer } from '@/hooks/useVideoPlayer';
 import { usePictureInPicture } from '@/hooks/usePictureInPicture';
@@ -9,7 +9,7 @@ import { RelatedVideosList } from './RelatedVideosList';
 import { AutoPlayCountdown } from './AutoPlayCountdown';
 import { getCategoryColor } from '@/utils/helpers';
 
-const FullscreenPlayer: React.FC = () => {
+export const FullscreenPlayer: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -17,6 +17,7 @@ const FullscreenPlayer: React.FC = () => {
     currentVideo,
     showRelatedList,
     minimizePlayer,
+    closePlayer,
     setShowRelatedList,
   } = useVideoStore();
   
@@ -60,6 +61,14 @@ const FullscreenPlayer: React.FC = () => {
           <div className="absolute left-1/2 top-2 z-30 -translate-x-1/2">
             <div className="h-1 w-12 rounded-full bg-white/30" />
           </div>
+          
+          <button
+            onClick={closePlayer}
+            className="absolute left-4 top-4 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 backdrop-blur-sm"
+            aria-label="Back to home"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </button>
           
           <div className="relative aspect-video w-full bg-black">
             <video
@@ -128,6 +137,3 @@ const FullscreenPlayer: React.FC = () => {
     </motion.div>
   );
 };
-
-export {FullscreenPlayer}
-export default FullscreenPlayer

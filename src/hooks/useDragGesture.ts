@@ -57,7 +57,6 @@ export const useDragGesture = (options: DragGestureOptions = {}) => {
     onDragEnd?.(direction);
   }, [isDragging, threshold, minimizePlayer, toggleRelatedList, showRelatedList, onDragEnd]);
   
-  // Mouse events
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     handleDragStart(e.clientY);
   }, [handleDragStart]);
@@ -87,7 +86,6 @@ export const useDragGesture = (options: DragGestureOptions = {}) => {
     handleDragEnd();
   }, [handleDragEnd]);
   
-  // Add/remove event listeners
   useEffect(() => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
